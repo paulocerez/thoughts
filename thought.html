@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+    <title>thoughts</title>
+    <meta name="thoughts" content="This is thoughts" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="background-picture">
+      <nav class="navbar">
+        <div class="navbar_container">
+          <a href="index.html" class="navbar_logo">thoughts</a>
+          <div class="navbar_toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navbar_menu">
+            <li class="navbar_item">
+              <a href="thought.html" class="navbar_links" id="thought-page"
+                >leave a thought</a
+              >
+            </li>
+            <li class="navbar_item">
+              <a href="history.html" class="navbar_links" id="history-page"
+                >thought history</a
+              >
+            </li>
+            <li class="navbar_item">
+              <a href="friendsarea.html" class="navbar_links" id="friends-page"
+                >friends area</a
+              >
+            </li>
+            <li class="navbar_btn">
+              <a href="login.html" class="button" id="login-page">login</a>
+            </li>
+            <li class="navbar_switch">
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h1 class="thought-head">The place to leave it all.</h1>
+      <form>
+        <div class="grid-container">
+          <!-- <div class="entry-fields" id="date"> -->
+          <div class="box" id="date">
+            <label for="input-date">Date *</label><br />
+            <input
+              type="date"
+              id="input-date"
+              name="date"
+              value="date"
+              required
+            /><br />
+          </div>
+          <div class="box" id="thought">
+            <label for="thought-text">Thought *</label><br />
+            <textarea
+              type="text"
+              id="thought-text"
+              name="thought"
+              rows="4"
+              cols="50"
+              required
+            ></textarea
+            ><br />
+          </div>
+          <div class="box" id="mood">
+            <label for="mood-input">Mood</label><br />
+            <input
+              type="text"
+              id="mood-input"
+              name="mood-input"
+              placeholder="mood"
+            />
+          </div>
+          <div class="box" id="additional">
+            <label for="motivation-quote">Additional content</label><br />
+            <input
+              type="file"
+              id="motivation-quote"
+              name="motivation"
+              value="motivation"
+            /><br />
+          </div>
+          <div class="buttons" id="buttons-reset-submit">
+            <input type="reset" id="reset-form" value="Reset" />
+            <input type="submit" id="submit-thought" value="Submit" />
+          </div>
+          <!-- </div> -->
+        </div>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+  <footer></footer>
+</html>

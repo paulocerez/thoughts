@@ -1,0 +1,274 @@
+$font-stack: "Poppins", sans-serif;
+$hover-black: rgb(10, 10, 10);
+$box-color: linear-gradient(to bottom, blue 30%, grey 70%);
+$box-width: 30%;
+$box-height: 350px;
+$container-radius: 3px;
+
+.date-today {
+  margin-top: 150px;
+  margin-left: 5%;
+  font-size: 1cm;
+}
+
+.past-entry-overview {
+  height: 40%;
+  width: 35%;
+  background-color: rgb(182, 10, 10);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 5% 15%;
+}
+
+/* Wrapper Line-Breaker + Listenwrapper */
+.wrapper-history {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container Listenelemente + Monat */
+.overview-days {
+  align-items: center;
+}
+
+.days-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 10%;
+  width: 80%;
+}
+
+/* Container der Listenelemente */
+.overview-list {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  list-style: none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.div-arrow {
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60px;
+  min-width: 150px;
+  height: 60px;
+  width: 150px;
+}
+
+.arrow {
+  border: solid rgb(255, 255, 255);
+  border-width: 0 3px 3px 0;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.left-arrow,
+.right-arrow {
+  background: transparent;
+  border: none;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Tages-Listenelemente */
+.days-list {
+  display: flex;
+  background-color: transparent;
+  min-height: 60px;
+  min-width: 150px;
+  height: 60px;
+  width: 150px;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(78, 77, 77);
+  border-style: solid;
+  font-family: $font-stack;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  line-height: 100px;
+  font-size: medium;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.days-list:hover {
+  background-color: $hover-black;
+  transform: scale(1.05);
+}
+
+/* Aktueller Monat-Textelement */
+.current-month {
+  color: white;
+  font-family: $font-stack;
+  font-weight: 300;
+  margin-left: 13%;
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+/* Line-Breaker */
+hr {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  height: 1px;
+  border-style: solid;
+  border: 1px solid rgb(107, 107, 107);
+  margin: 100px 30px 20px;
+  padding: 0;
+}
+
+.line-daily-navbar-below {
+  margin-top: 20px;
+}
+
+/* Hauptseite history unter der History-Navbar */
+
+.flexcontainer-history {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: auto;
+  margin: 100px 10%;
+}
+
+@mixin reset-list {
+  background: -moz-linear-gradient(to bottom, blue 30%, grey 70%);
+}
+
+/* Letzter Eintrag -> wird links auf dem Display gezeigt */
+// Flexchild 1
+
+/* Monatsübersicht */
+// Flexchild 2
+
+/* random Memories */
+// Flexchild 3
+.months-container,
+.memories-container,
+.lastentry-container {
+  padding: 20px;
+  width: $box-width;
+  height: $box-height;
+  /* height: 40%; */
+  text-align: center;
+  background-color: rgb(9, 8, 8);
+  // box-shadow: 12px 12px 5px 0.5px rgb(8, 8, 8);
+  border-style: solid;
+  border-color: transparent;
+  border-radius: $container-radius;
+  transition: transform 0.5s ease;
+}
+
+.memories-container {
+  background-image: url(memories.jpg);
+  background-size: cover;
+  background-position: 50% 30%;
+}
+
+.months-container {
+  background-image: url(books.jpg);
+  background-size: cover;
+  background-position: 50% 30%;
+}
+
+.lastentry-container {
+  background-image: url(iceberg.jpg);
+  background-size: cover;
+  background-position: 50% 20%;
+}
+h1 {
+  font-family: $font-stack; // Poppins 300
+  font-weight: 300;
+}
+
+.flexcontainer-history > *:hover {
+  // using > because it only matches direct children, not all descendants (* for all descendants)
+  transform: scale(1.03);
+}
+
+.months-text,
+.months-head,
+.lastentry-head,
+.lastentry-text,
+.memories-text,
+.memories-head {
+  color: rgb(0, 0, 0);
+}
+
+// .picture-container {
+//   // margin: 5%;
+//   background-color: aqua;
+//   border-radius: $container-radius;
+//   width: auto;
+//   margin: 5%;
+//   height: 50%;
+//   background-size: cover;
+//   background-position: 50%;
+//   background-image: url(stars.jpg);
+// }
+
+@media screen and (max-width: 1100px) {
+  .flexcontainer-history {
+    display: block;
+    justify-content: center;
+    margin: 50px auto;
+    width: 70%;
+
+    // position: absolute;
+  }
+  .lastentry-container,
+  .months-container,
+  .memories-container {
+    width: auto;
+    height: 20%;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .days-scroll {
+    margin: auto;
+    width: 100%;
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+    <title>thoughts</title>
+    <meta name="thoughts" content="This is thoughts" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="background-pic">
+      <nav class="navbar">
+        <div class="navbar_container">
+          <a href="index.html" class="navbar_logo">thoughts</a>
+          <div class="navbar_toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navbar_menu">
+            <li class="navbar_item">
+              <a href="thought.html" class="navbar_links" id="thought-page"
+                >leave a thought</a
+              >
+            </li>
+            <li class="navbar_item">
+              <a href="history.html" class="navbar_links" id="history-page"
+                >thought history</a
+              >
+            </li>
+            <li class="navbar_item">
+              <a href="friendsarea.html" class="navbar_links" id="friends-page"
+                >friends area</a
+              >
+            </li>
+            <li class="navbar_btn">
+              <a href="login.html" class="button" id="login-page">login</a>
+            </li>
+            <li class="navbar_switch">
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="screen-signup-login">
+        <div class="signup-wrapper">
+          <h2 class="signup-headline">Bei Thoughts registrieren</h2>
+          <div class="mail">
+            <!-- <label for="mail-input">E-Mail-Adresse:</label> -->
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="E-Mail-Adresse"
+            />
+          </div>
+          <!-- <div class="phone">
+            <label for="phone">Phone:</label>
+            <input type="phone" id="phone" name="phone" />
+          </div> -->
+
+          <div class="password">
+            <!-- <label for="password">Password:</label> -->
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Passwort erstellen"
+            />
+          </div>
+          <div class="password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Repeat Password"
+            />
+          </div>
+          <div class="konto-button">
+            <input
+              type="button"
+              id="konto-button"
+              name="konto-button"
+              value="Konto erstellen"
+            />
+          </div>
+        </div>
+        <div class="login-wrapper">
+          <div class="login-question">
+            <h2>Du hast bereits ein Konto?</h2>
+          </div>
+          <div class="login-first">
+            <input
+              type="text"
+              id="login-first"
+              name="login-first"
+              placeholder="E-Mail-Adresse oder Telefonnummer"
+            />
+          </div>
+          <div class="password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="forgot-password">
+            <input
+              type="button"
+              id="forgot-password"
+              name="forgot-password"
+              value="Passwort vergessen?"
+            />
+          </div>
+          <div class="login-button">
+            <input
+              type="button"
+              id="login-button"
+              name="login-button"
+              value="Einloggen"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+  <footer></footer>
+</html>

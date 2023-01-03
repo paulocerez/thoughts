@@ -1,0 +1,574 @@
+@import "history.css";
+@import "friendsarea.css";
+@import "thought.css";
+@import "login.css";
+.background-pic {
+  width: 100%;
+  height: 100vh;
+  background-image: url(think.jpg);
+  background-size: cover;
+  background-position: 300px;
+  background-attachment: fixed;
+}
+
+.background-pic.active {
+  background-image: url(lookingup.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: 50% 90%;
+}
+
+.history-background-pic {
+  width: 100%;
+  height: 100vh;
+  background-image: url(history_back.jpg);
+  background-size: cover;
+  background-position: 100px;
+}
+
+.screen-signup-login * {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #000;
+  display: flex;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+} */
+.navbar {
+  width: 100%;
+  /* margin-top: 50px; */
+  height: 80px;
+  font-size: 1rem;
+  /* padding: auto; */
+  display: flex;
+  align-items: center;
+  position: absolute; /* sticky -> element sticks to the viewport while scrolling */
+  top: 0;
+  z-index: 5; /* specifies stack order of an element */
+}
+
+.navbar_container {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  z-index: 1;
+  width: 100%;
+  max-width: 2300px;
+  margin-right: 10%;
+}
+
+.navbar_logo {
+  background-color: rgb(18, 122, 170);
+  background-image: linear-gradient(to top, #08b9ff 100%, #3162e9 0%);
+  text-decoration: none;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: flex;
+  margin: auto 75px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.navbar_menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.navbar_links {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  text-decoration: none;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.navbar_links .active {
+  color: rgb(0, 0, 0);
+}
+
+.navbar_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.button {
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 60px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: linear-gradient(to right, rgb(41, 90, 238), rgb(0, 132, 255), rgb(0, 140, 255));
+  color: #fff;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.navbar_item {
+  list-style: none;
+  display: inline;
+  margin: 0 60px;
+  position: relative;
+  height: 80px;
+}
+
+.present {
+  display: none;
+}
+
+.presentio {
+  background-image: url("geschenk.jpg");
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-position: 50%;
+  background-size: cover;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#present-link {
+  color: black;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.wrapper-present {
+  display: flex;
+  margin-left: 8%;
+}
+
+.navbar_links::after {
+  /* ::after inserts something after the content of each selected element(s) */
+  content: "";
+  height: 3px;
+  width: 0;
+  background: rgb(18, 122, 170);
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  transition: 0.5s;
+}
+
+.navbar_links:hover::after {
+  width: 100%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 43px;
+  height: 24px;
+  margin: 0 60px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(18, 122, 170);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(18, 122, 170);
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.how-it-works {
+  margin: 2rem 200px 0 0;
+  border-color: #fff;
+  border-style: solid;
+  border-radius: 5px;
+  text-decoration: none;
+  height: 3rem;
+  width: 150px;
+  font-size: medium;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background: #000;
+  transition: 0.2 all ease;
+}
+
+.how-it-works:hover {
+  background-color: rgb(18, 122, 170);
+}
+
+/* index.html specific */
+.main-intro-text {
+  color: #fff;
+  margin-left: 8%;
+}
+
+.main-intro-text.active {
+  color: black;
+}
+
+.intro-head {
+  font-size: 55px;
+  margin-top: 20%;
+}
+
+.intro-passage {
+  margin-top: 1rem;
+  font-size: 35px;
+  font-weight: lighter;
+}
+
+.intro-passage.active {
+  color: black;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.thinkers {
+  font-size: 55px;
+  -webkit-text-decoration: underline white;
+          text-decoration: underline white;
+  cursor: pointer;
+}
+
+/* position: relative; element is positioned relative to its normal position
+  overflow: hidden; prevents scrollbars from showing up, even when necessary, hides the child elements that don't fit in the container
+} */
+/* span {
+  background: #fff;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+} */
+button:hover span {
+  width: 100%;
+}
+
+button:hover {
+  transition: 0.2s;
+}
+
+footer {
+  color: #000;
+}
+
+@media screen and (max-width: 1200px) {
+  .navbar_container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    /* max-width: 1300px; */
+    padding: 0;
+  }
+  .navbar_menu {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: -500px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: -1;
+    background-color: rgb(18, 18, 19);
+  }
+  .navbar_menu.active {
+    top: 100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 99;
+    height: 60vh;
+    font-size: 1.6rem;
+  }
+  .navbar_toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    margin-right: 5%;
+    transition: all 0.3s ease-in-out;
+    background: white;
+  }
+  .navbar_item {
+    width: 100%;
+  }
+  .navbar_links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    margin-left: -60px;
+  }
+  .navbar_links:hover::after {
+    width: 0;
+  }
+  .navbar_links:hover {
+    color: rgb(18, 122, 170);
+    transition: all 0.3s ease;
+  }
+  .navbar_btn {
+    padding-bottom: 2rem;
+  }
+  .wrapper-signup {
+    min-width: 500px;
+    align-items: center;
+    justify-content: center;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80px;
+    margin: 0;
+  }
+  #mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+  .navbar_toggle .bar {
+    display: block;
+    cursor: pointer;
+  }
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .screen-signup-login {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .signup-wrapper,
+.login-wrapper {
+    grid-column: 1;
+  }
+}
+@media screen and (max-width: 700px) {
+  .navbar_logo {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    padding: auto;
+  }
+  .intro-passage {
+    text-align: center;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+  .navbar_container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+    margin: 0;
+  }
+  .main-intro-text {
+    margin: auto;
+    margin-top: 30px;
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .how-it-works-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .how-it-works {
+    margin: auto;
+    height: 4rem;
+    width: 200px;
+    font-size: large;
+  }
+}
+@media screen and (max-width: 500px) {
+  .navbar_container {
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+    margin: 0;
+  }
+  .navbar_menu {
+    display: none;
+    grid-template-columns: auto;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: -1000px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: -1;
+    background-color: rgb(18, 18, 19);
+  }
+  .navbar_menu.active {
+    display: grid;
+    top: 100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 99;
+    height: 60vh;
+    font-size: 1.2rem;
+  }
+  .navbar_logo {
+    padding-left: 25px;
+  }
+  .navbar_toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: white;
+  }
+  .navbar_item {
+    width: 100%;
+  }
+  .navbar_links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    margin-left: -60px;
+  }
+  .navbar_links:hover::after {
+    width: 0;
+  }
+  .navbar_links:hover {
+    color: rgb(18, 122, 170);
+    transition: all 0.3s ease;
+  }
+  .navbar_btn {
+    padding-bottom: 2rem;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80px;
+    margin: 0;
+  }
+  #mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+  .navbar_toggle .bar {
+    display: block;
+    cursor: pointer;
+  }
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+.info-window {
+  margin: 15%;
+  background-color: grey;
+}/*# sourceMappingURL=style.css.map */
