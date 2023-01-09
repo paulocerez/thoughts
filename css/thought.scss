@@ -216,3 +216,85 @@ label {
     background-color: transparent;
   }
 }
+
+.thought-summary-header {
+  color: white;
+  font-family: $font-stack;
+  font-weight: 300;
+  padding: 20px 0;
+}
+
+.thought-summary-container {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  // background-color: rgb(172, 38, 255);
+}
+
+#thoughts {
+  display: grid;
+  border-style: none;
+  grid-template-columns: 1fr 1fr;
+  column-gap: auto;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  padding: 0 10px 0;
+}
+
+#thoughts .thought {
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  // background-color: aqua;
+}
+
+#thoughts > .thought:first-child {
+  display: none;
+}
+
+.content {
+  display: flex;
+  border: solid;
+  text-align: center;
+  color: #fff;
+  min-height: 55px;
+  padding: 15px;
+}
+
+.text {
+  width: auto;
+  text-align: center;
+  border: none;
+  align-items: center;
+  color: #fff;
+}
+
+// buttons
+.actions {
+  border-style: none;
+}
+
+.edit {
+  color: aqua;
+}
+
+.delete {
+  color: rgb(162, 1, 162);
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  font-family: $font-stack;
+  font-weight: 600;
+}

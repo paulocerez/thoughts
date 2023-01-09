@@ -5,8 +5,8 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
     <title>thoughts</title>
     <meta name="thoughts" content="This is thoughts" />
-    <link rel="stylesheet" href="css/style.css" />
-    <style>
+    <link rel="stylesheet" href="../css/style.css" />
+    <styl>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap");
@@ -51,24 +51,27 @@
         </div>
       </nav>
       <h1 class="thought-head">The place to leave it all.</h1>
-      <form>
+      <div class="form-thoughts">
+
+
+      <form id="new-thought-form">
         <div class="grid-container">
           <!-- <div class="entry-fields" id="date"> -->
           <div class="box" id="date">
             <label for="input-date">Date *</label><br />
             <input
               type="date"
-              id="input-date"
+              id="date-input"
               name="date"
               value="date"
-              required
+              
             /><br />
           </div>
           <div class="box" id="thought">
             <label for="thought-text">Thought *</label><br />
             <textarea
               type="text"
-              id="thought-text"
+              id="thought-input"
               name="thought"
               rows="4"
               cols="50"
@@ -98,11 +101,25 @@
             <input type="reset" id="reset-form" value="Reset" />
             <input type="submit" id="submit-thought" value="Submit" />
           </div>
-          <!-- </div> -->
+        </div>
+        <div class="thought-summary-container">
+          <h1 class="thought-summary-header">Thought summary</h1>
+            <div id="thoughts">
+              <div class="thought">
+                <div class="content">
+                  <input type="text" class="text" value="thought-summary" readonly/>
+                </div>
+                <div class="actions">
+                  <button class="edit">edit</button>
+                  <button class="delete">delete</button>
+                </div>
+              </div>
+            </div>
+        </div>
         </div>
       </form>
     </div>
-    <script src="script.js"></script>
+    <script src="../src/script.js"></script>
   </body>
   <footer></footer>
 </html>
