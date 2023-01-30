@@ -6,7 +6,7 @@
     <title>thoughts</title>
     <meta name="thoughts" content="This is thoughts" />
     <link rel="stylesheet" href="../css/style.css" />
-    <styl>
+    <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap");
@@ -54,19 +54,8 @@
       <div class="form-thoughts">
 
 
-      <form id="new-thought-form" action="/thought" method="POST">
+      <form id="new-thought-form" action="/thought" method="post">
         <div class="grid-container">
-          <!-- <div class="entry-fields" id="date"> -->
-          <div class="box" id="date">
-            <label for="input-date">Date *</label><br />
-            <input
-              type="date"
-              id="date-input"
-              name="date"
-              value="date"
-              
-            /><br />
-          </div>
           <div class="box" id="thought">
             <label for="thought-text">Thought *</label><br />
             <textarea
@@ -84,7 +73,7 @@
             <input
               type="text"
               id="mood-input"
-              name="mood-input"
+              name="mood"
               placeholder="mood"
             />
           </div>

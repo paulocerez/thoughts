@@ -1,0 +1,19 @@
+# basic, single config file for all the containers
+version: "3"
+services:
+  web:
+    container_name: thoughts-app
+    #  restart whenever it fails
+    restart: always
+    # look in the current directory for a docker file to build the image
+    build: .
+    # mapping of local machine port to the container
+    ports:
+      - "9000:3000"
+    external_links:
+      - thoughts-data
+  mongo:
+    container_name: thoughts-data
+    image: mongo
+    ports:
+      - "27017:27017"

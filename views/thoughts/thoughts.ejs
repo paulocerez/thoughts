@@ -1,0 +1,76 @@
+<!-- for the /thoughts route -->
+<!DOCTYPE html>
+<html lang="de">
+<%- include("../includes/header", { title: "Thoughts | Thoughts" }) %>
+  <body>
+    <div class="background-picture">
+      <%- include(‘../includes/navbar') %>
+      <h1 class="thought-head"><%= title %></h1>
+      <div class="form-thoughts">
+
+
+      <form id="new-thought-form" action="/thought" method="post">
+        <div class="grid-container">
+          <div class="box" id="thought">
+            <label for="thought-text">Thought *</label><br />
+            <textarea
+              type="text"
+              id="thought-input"
+              name="thought"
+              rows="4"
+              cols="50"
+              required
+            ></textarea
+            ><br />
+          </div>
+          <div class="box" id="mood">
+            <label for="mood-input">Mood</label><br />
+            <input
+              type="text"
+              id="mood-input"
+              name="mood"
+              placeholder="mood"
+            />
+          </div>
+          <div class="box" id="additional">
+            <label for="motivation-quote">Additional content</label><br />
+            <input
+              type="file"
+              id="motivation-quote"
+              name="motivation"
+              value="motivation"
+            /><br />
+          </div>
+          <div class="buttons" id="buttons-reset-submit">
+            <input type="reset" id="reset-form" value="Reset" />
+            <input type="submit" id="submit-thought" value="Submit" />
+          </div>
+        </div>
+        <div class="thought-summary-container">
+          <h1 class="thought-summary-header">Thought summary</h1>
+        <!-- EJS code -->
+        <!-- executing JS code without output -->
+        <% const thoughtNumber = 0 %>
+        <!-- numberOfThoughts as a variable defined in the route function -->
+        <!-- executing JS + inserting the escaped result into the HTML -->
+        <p>This is thought number: <%= numberOfThoughts %> </p>
+        <p>page name: <%= nameOfPage %> </p>
+            <div id="thoughts">
+              <div class="thought">
+                <div class="content">
+                  <input type="text" class="text" value="thought-summary" readonly/>
+                </div>
+                <div class="actions">
+                  <button class="edit">edit</button>
+                  <button class="delete">delete</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+      </form>
+    </div>
+    <script src="../src/script.js"></script>
+  </body>
+  <footer></footer>
+</html>

@@ -1,0 +1,86 @@
+<!-- for the /memories route -->
+<!DOCTYPE html>
+<html lang="de">
+  <%- include("../includes/header", { title: "Thoughts | Memories "}) %>
+  <body>
+    <!-- <div class="history-background-pic"> -->
+    <%- include("../includes/navbar") %>
+    <div class="wrapper-history">
+      <div class="day-navbar">
+        <hr class="line-daily-navbar-above" />
+        <div class="overview-days">
+          <h3 class="current-month">Gegenwärtiger Monat</h3>
+          <div class="days-scroll">
+            <div class="div-arrow">
+              <button class="left-arrow" onclick="slide('left')" type="button">
+                <p><i class="arrow left"></i></p>
+              </button>
+            </div>
+            <ul class="overview-list">
+              <li class="days-list">
+                Gestern
+                <a href="#" class="days-links" id="today"></a>
+              </li>
+            </ul>
+            <div class="div-arrow">
+              <button
+                class="right-arrow"
+                onclick="slide('right')"
+                type="button"
+              >
+                <p><i class="arrow right"></i></p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr class="line-daily-navbar-below" />
+
+        <!-- Flexcontainer history -->
+        <div class="flexcontainer-history">
+          <!-- Flexchild 1 -->
+          <div class="lastentry-container">
+            <h1 class="lastentry-head">letzter Eintrag</h1>
+            <p class="lastentry-text">Gelange zu deinem letzten Eintrag.</p>
+            <div class="picture-container" id="lastentry-pic"></div>
+          </div>
+          <!-- Flexchild 2 -->
+          <div class="memories-container">
+            <!-- <div class="picture-container" id="memories-pic"> -->
+
+            <h1 class="memories-head">Memories</h1>
+            <p class="memories-text">
+              Schau dir zufällige Einträge aus der Vergangenheit an.
+            </p>
+            <!-- </div> -->
+          </div>
+          <!-- Flexchild 3 -->
+          <div class="months-container">
+            <div class="picture-container" id="months-pic"></div>
+
+            <h1 class="months-head">Monate</h1>
+            <p class="months-text">Übersicht der letzten Monate.</p>
+          </div>
+        </div>
+        <p>Last thoughts:</p>
+        <ul>
+          <% memoryList.forEach(memory => { %>
+          <p><%= memory.date %></p>
+          <% }); %> <% memoryList.forEach(memory => { %>
+          <li>
+            <!-- anchor tag: defining links -->
+            <!-- references the /memories/specific-slug link -->
+            <a href="/memories/<%= memory.slug %>"><%=memory.thought %></a>
+            <% if(memory.goodMood) { %> I'm in a good mood <% } else { %>
+            <%=memory.goodMood %> <% } %>
+          </li>
+          <p><%= thoughtSum("5")%></p>
+          <% }) %>
+        </ul>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <script src="../src/script.js"></script>
+  </body>
+  <footer></footer>
+</html>

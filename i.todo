@@ -2,14 +2,11 @@ local host, PORTS
 destructuring
 ES6: classes, import/export, modules, spread operator
 package managers
-asynchronous JS: callbacks, promises, async/await
-refernece vs. value difference (web dev simplified vdeo)
+reference vs. value difference (web dev simplified vdeo)
 immutability
 advanced logic - short circuiting
 parcel
 components & state
-Git/GitHub
 
 // Backend
 POSIX Basics (stdin, stdout, stderr, pipes)
-

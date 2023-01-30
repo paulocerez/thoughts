@@ -112,14 +112,6 @@ function slide(direction) {
   }, 50);
 }
 
-// Requests
-
-// fetch("http://localhost:3000")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     memoriesContainer.innerHTML = JSON.stringify(data);
-//   });
-
 // THOUGHT.HTML
 window.addEventListener("load", () => {
   const form = document.querySelector("#new-thought-form");
@@ -128,11 +120,11 @@ window.addEventListener("load", () => {
   const th_input = document.querySelector("#mood-input");
   const thoughts_el = document.querySelector("#thoughts");
 
-  // this event handler prevents the page from refreshing when a form is submitted ->
-  // preventDefault() method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be
-  // -> in case of the submit button it refreshes by default
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    // this event handler prevents the page from refreshing when a form is submitted ->
+    // preventDefault() method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be
+    // -> in case of the submit button it refreshes by default
 
     // der Variable thought wird der input-Wert aus dem Thought-Input zugewiesen
     const thought = thought_input.value;
@@ -141,26 +133,21 @@ window.addEventListener("load", () => {
       // wenn das Thought-Feld nicht ausgefüllt wurde, dann erscheint diese Fehlermeldung
       alert("Please fill out all the required fields! :)");
     }
-    // über .createElement können neue nodes des DOM erstellt und auf diesem platziert werden
-    const thought_el = document.createElement("div");
+
+    function createElWithClass(new_element, new_class) {
+      const current = document.createElement(new_element);
+      current.classList.add(new_class);
+      return current;
+    }
+
     // dem erstellten Element eine Klasse zuweisen -> in diesem Fall ein thought-Element
-    thought_el.classList.add("thought");
-
+    const thought_el = createElWithClass("div", "thought");
     // ein weiteres Element erstellen -> der content eines thoughts (hat den input-Text inne)
-    const thought_content_el = document.createElement("div");
-    // content-Klasse hinzufügen
-    thought_content_el.classList.add("content");
-
-    // dem content-Element den inneren Text (eines HTML-Elements) zuweisen -> in diesem Fall dem String, der über das input-Feld eingegeben wurde
-    // thought_content_el.innerText = thought;
-
+    const thought_content_el = createElWithClass("div", "content");
     // dem thought-Element wird ein child-Element zugefügt, welches aus dem neu geschaffenen content-Element besteht
     thought_el.appendChild(thought_content_el);
 
-    // ein input Element erstellen
-    const thought_input_el = document.createElement("input");
-    // dem Input-Element die Klasse "text" hinzufügen
-    thought_input_el.classList.add("text");
+    const thought_input_el = createElWithClass("input", "text");
     // den Input Type des Elements zu "text" ändern
     thought_input_el.type = "text";
     // den Wert des inputs zu dem eingegebenen thought input ändern
@@ -170,16 +157,14 @@ window.addEventListener("load", () => {
     // dem content Element das input Element als child hinzufügen
     thought_content_el.appendChild(thought_input_el);
 
-    // Div erstellen, der die content-Buttons enthält
-    const actions_buttons_el = document.createElement("div");
-    actions_buttons_el.classList.add("actions");
+    // Div erstellen, der die content-Buttons enthält + die Buttons mit den Klassen
 
-    const task_del_button = document.createElement("button");
-    task_del_button.classList.add("delete");
+    const actions_buttons_el = createElWithClass("div", "actions");
+
+    const task_del_button = createElWithClass("button", "delete");
     task_del_button.innerHTML = "delete";
 
-    const task_edit_button = document.createElement("button");
-    task_edit_button.classList.add("edit");
+    const task_edit_button = createElWithClass("button", "edit");
     task_edit_button.innerHTML = "edit";
 
     // die Buttons dem action div zuweisen, den div seinem parent zuweisen
@@ -189,12 +174,15 @@ window.addEventListener("load", () => {
 
     // der Thoughtssammlung das thought-Element als child hinzufügen
     thoughts_el.appendChild(thought_el);
-    input.value = "";
+
+    // sets input value of the form to an empty string, after submit is pressed
+    thought_input.value = "";
 
     task_edit_button.addEventListener("click", (e) => {
       if (task_edit_button.innerText.toLowerCase() == "edit") {
         task_edit_button.innerText = "save";
         thought_input_el.removeAttribute("readonly");
+        // focus -> element in focus will receive keyboard focus
         thought_input_el.focus();
       } else {
         task_edit_button.innerText = "edit";
