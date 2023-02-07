@@ -1,0 +1,22 @@
+// mongoose import + Schema setup
+import mongoose from "mongoose";
+mongoose
+  .connect("mongodb://localhost:2717/thoughts-data")
+  .then(() => console.log("CONNECTION BUILT..."))
+  .catch((error) => console.error(error));
+
+const userSchema = new mongoose.Schema({
+  firstName: { type: String, required: true, maxLength: 20 },
+  lastName: { type: String, required: true, maxLength: 30 },
+  age: Number,
+  email: { type: String, required: true, unique: true },
+});
+
+const User = mongoose.model("User", userSchema);
+
+const entrySchema = new mongoose.Schema({
+  date: { type: String, required: true },
+  thoughtText: { type: String, required: true },
+  mood: String,
+});
+const Entry = mongoose.model("Entry", entrySchema);

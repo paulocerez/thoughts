@@ -9,7 +9,6 @@
     "@fastify/multipart": "^7.4.0",
     "@fastify/static": "^6.6.1",
     "@fastify/view": "^7.4.0",
-    "@prisma/client": "^4.9.0",
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
     "body-parser": "^1.20.1",
@@ -27,11 +26,9 @@
     "encodeurl": "^1.0.2",
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
-    "express": "^4.18.2",
     "faker": "^5.5.3",
     "fastify": "^4.10.2",
     "fastify-autoload": "^3.13.0",
-    "fastify-cli": "^5.7.0",
     "fastify-formbody": "^5.3.0",
     "fastify-plugin": "^4.4.0",
     "fastify-swagger": "^5.2.0",
@@ -58,7 +55,6 @@
     "on-finished": "^2.4.1",
     "parseurl": "^1.3.3",
     "path-to-regexp": "^0.1.7",
-    "prisma": "^4.9.0",
     "proxy-addr": "^2.0.7",
     "qs": "^6.11.0",
     "range-parser": "^1.2.1",
@@ -78,9 +74,10 @@
     "vary": "^1.1.2"
   },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "test": "node server",
     "dev": "nodemon server",
-    "start": "fastify start server.js"
+    "start": "node server.js"
   },
   "type": "module",
   "keywords": [],
@@ -88,7 +85,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "nodemon": "^2.0.20"
+    "@types/node": "^18.13.0",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.5"
   }
 }

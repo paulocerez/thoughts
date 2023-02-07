@@ -3,16 +3,17 @@ version: "3"
 services:
   web:
     container_name: thoughts-app
+    image: thoughts-app
     #  restart whenever it fails
-    restart: always
+    # restart: always
     # look in the current directory for a docker file to build the image
     build: .
     # mapping of local machine port to the container
     ports:
-      - "9000:3000"
+      - "4000:3000"
     external_links:
       - thoughts-data
-  mongo:
+  db:
     container_name: thoughts-data
     image: mongo
     ports:
