@@ -7,6 +7,13 @@ immutability
 advanced logic - short circuiting
 parcel
 components & state
+CI/CD
+Production vs. Deployment
+Testing
+API endpoints
+Serverside, Serverless
+sicherer Umgang mit Git
+Docker
 
 // Backend
 POSIX Basics (stdin, stdout, stderr, pipes)

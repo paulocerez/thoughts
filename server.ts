@@ -1,8 +1,5 @@
-import Fastify from "fastify";
+import Fastify, { FastifyRequest } from "fastify";
 const fastify = Fastify({ logger: true });
-// import { request } from "express";
-// import objectInspect from "object-inspect";
-// import pathtoRegexp from "path-to-regexp";
 
 // Plugins
 
@@ -35,6 +32,7 @@ const optsEjs = {
 };
 
 // Helper Functions Imports
+// @ts-ignore
 import { thoughtSum } from "./helpers/thought-sum.js";
 
 // replicating the functionality of __dirname for ES modules (__dirname to get the path of the folder where the current JS file resides)
@@ -110,29 +108,29 @@ fastify.get("/", (request, reply) => {
   });
 });
 
-fastify.post("/thought", async (request, reply) => {
-  console.log(request.body);
-  reply.send(
-    `Your thought: ${request.body.thought} and your Mood: ${request.body.mood}`
-  );
+// fastify.post("/thought", async (request, reply) => {
+//   console.log(request.body);
+//   reply.send(
+//     `Your thought: ${request.body.thought} and your Mood: ${request.body.mood}`
+//   );
 
-  // creating a temporary object that can be worked with as an instance of a single entry record
-  try {
-    const entry = new Entry({
-      date: "03.02.2023",
-      thoughtText: "I live in Potsdam",
-      mood: "So lala",
-    });
-    // saving that object -> waiting for the db to save the entry based on matching certain schema-defined criteria
-    // await blocks the entire function execution until entry.save() has been done executing
-    await entry.save();
+//   // creating a temporary object that can be worked with as an instance of a single entry record
+//   try {
+//     const entry = new Entry({
+//       date: "03.02.2023",
+//       thoughtText: "I live in Potsdam",
+//       mood: "So lala",
+//     });
+//     // saving that object -> waiting for the db to save the entry based on matching certain schema-defined criteria
+//     // await blocks the entire function execution until entry.save() has been done executing
+//     await entry.save();
 
-    reply.send("COOKIE");
-  } catch (error) {
-    console.error(error); // logging the error to the devs console
-    reply.send("Error, entry hasn't been saved"); // sending an error message to the user
-  }
-});
+//     reply.send("COOKIE");
+//   } catch (error) {
+//     console.error(error); // logging the error to the devs console
+//     reply.send("Error, entry hasn't been saved"); // sending an error message to the user
+//   }
+// });
 // could alternatively destructure the code this way
 // fastify.post('/submit', ({body: {username}}, reply) => {
 //   console.log(username);
@@ -168,10 +166,10 @@ fastify.get("/search", (request, reply) => {
   console.log(`You searched for: `, JSON.stringify(request.query));
 });
 // route parameters for dynamic components in URLs
-fastify.get("/memories/:slug", async (request, reply) => {
-  const mems = await request.params.slug;
-  reply.send(mems);
-});
+// fastify.get("/memories/:slug", async (request: FastifyRequest, reply) => {
+//   const mems = await request.params.slug;
+//   reply.send(mems);
+// });
 
 // fastify.get("/memories", (request, reply) => {
 //   let str = "memories".split();
@@ -195,13 +193,13 @@ const opts = {
 };
 
 // async/await routing
-fastify.get("/random", opts, async function (request, reply) {
-  var data = await getData();
-  var processed = await processData(data);
-  //returning the body instead of reply.send
-  return processed;
-  // alternativ: return reply.send(processed);
-});
+// fastify.get("/random", opts, async function (request, reply) {
+//   var data = await getData();
+//   var processed = await processData(data);
+//   //returning the body instead of reply.send
+//   return processed;
+//   // alternativ: return reply.send(processed);
+// });
 
 // task: for at least one of the routes, use a JavaScript template string to dynamically render some content to the user based on data previously defined in variables
 
