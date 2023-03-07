@@ -79,7 +79,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node server",
-    "dev": "nodemon index.ts",
+    "dev": "nodemon src/index.ts",
     "start": "node index.js"
   },
   "keywords": [],

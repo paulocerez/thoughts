@@ -33,7 +33,7 @@ const optsEjs = {
 
 // Helper Functions Imports
 // @ts-ignore
-import { thoughtSum } from "./helpers/thought-sum.js";
+import { thoughtSum } from "../../helpers/thought-sum.js";
 
 // replicating the functionality of __dirname for ES modules (__dirname to get the path of the folder where the current JS file resides)
 import path from "path";
