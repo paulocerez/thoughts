@@ -5,14 +5,20 @@
 # sets base image to start from to "node:19"
 FROM node:18
 # sets the working directory
-WORKDIR /usr/src/app
+WORKDIR /thoughts_projekt
 # copies package.json files to the working directory, thereby also to the image -> optimization, because we cache the results and don't need to run it everytime anything changes
 COPY package*.json ./
 # installs dependencies
-RUN npm ci
+RUN npm i
+
 # copy everything else into the container
 COPY . .
+
+RUN npx prisma generate
 # exposes port 3000 -> here the Fastify app will expect to listen on, it doesn't actually listen on it based on that command
-EXPOSE 3000
+
+ENV PORT = 8000
+
+EXPOSE 8000
 # command to run when the container is run (start is specified in package.json)
 CMD ["npm", "run", "dev"]

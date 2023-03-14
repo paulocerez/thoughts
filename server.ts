@@ -10,12 +10,12 @@ import fastifyFormbody from "@fastify/formbody";
 import fastifyView from "@fastify/view";
 import ejs from "ejs";
 import mongodb from "@fastify/mongodb";
-fastify.register(mongodb, {
-  // closes the mongodb connection when app is stopped
-  forceClose: true,
-  // local thoughts db
-  url: "mongodb://localhost:2717/thoughts-data",
-});
+// fastify.register(mongodb, {
+//   // closes the mongodb connection when app is stopped
+//   forceClose: true,
+//   // local thoughts db
+//   url: "mongodb://localhost:2717/thoughts-data",
+// });
 // this plugin uses the Node MongoDB Driver under the hood to communicate
 
 const optsEjs = {

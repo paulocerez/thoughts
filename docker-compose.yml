@@ -3,6 +3,10 @@ services:
   web:
     container_name: thoughtsapp
     image: thoughtsbackend
+    # build image once anything changes in the workdir
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./src/:/app/src
     #  restart whenever it fails

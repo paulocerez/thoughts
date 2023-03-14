@@ -7,8 +7,8 @@
       <div class="screen-signup-login">
         <div class="signup-wrapper">
           <h2 class="signup-headline">Bei Thoughts registrieren</h2>
+          <form id="signup-form" action="/signup" method="post">
           <div class="mail">
-            <!-- <label for="mail-input">E-Mail-Adresse:</label> -->
             <input
               type="email"
               id="email"
@@ -16,27 +16,29 @@
               placeholder="E-Mail-Adresse"
             />
           </div>
-          <!-- <div class="phone">
-            <label for="phone">Phone:</label>
-            <input type="phone" id="phone" name="phone" />
-          </div> -->
-
-          <div class="password">
-            <!-- <label for="password">Password:</label> -->
+          <div class="username">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+            />
+          </div>
+          <!-- <div class="password">
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Passwort erstellen"
             />
-          </div>
-          <div class="password">
+          </div> -->
+          <!-- <div class="password">
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Repeat Password"
-            />
+            /> -->
           </div>
           <div class="konto-button">
             <input
@@ -83,6 +85,7 @@
               value="Einloggen"
             />
           </div>
+        </form>
         </div>
       </div>
     </div>
