@@ -7,8 +7,8 @@
       <div class="screen-signup-login">
         <div class="signup-wrapper">
           <h2 class="signup-headline">Bei Thoughts registrieren</h2>
+          <form id="signup-form" action="/signup" method="post">
           <div class="mail">
-            <!-- <label for="mail-input">E-Mail-Adresse:</label> -->
             <input
               type="email"
               id="email"
@@ -16,36 +16,23 @@
               placeholder="E-Mail-Adresse"
             />
           </div>
-          <!-- <div class="phone">
-            <label for="phone">Phone:</label>
-            <input type="phone" id="phone" name="phone" />
-          </div> -->
-
-          <div class="password">
-            <!-- <label for="password">Password:</label> -->
+          <div class="username">
             <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Passwort erstellen"
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
             />
           </div>
-          <div class="password">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Repeat Password"
-            />
           </div>
-          <div class="konto-button">
+          <!-- <div class="konto-button">
             <input
               type="button"
               id="konto-button"
               name="konto-button"
               value="Konto erstellen"
             />
-          </div>
+          </div> -->
         </div>
         <div class="login-wrapper">
           <div class="login-question">
@@ -67,7 +54,7 @@
               placeholder="Password"
             />
           </div>
-          <div class="forgot-password">
+          <!-- <div class="forgot-password">
             <input
               type="button"
               id="forgot-password"
@@ -82,11 +69,13 @@
               name="login-button"
               value="Einloggen"
             />
-          </div>
+          </div> -->
+          <button type="submit">Save</button>
+        </form>
         </div>
       </div>
     </div>
-    <script src="../src/script.js"></script>
+    <%- include("../includes/script") %>
   </body>
   <footer></footer>
 </html>
