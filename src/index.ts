@@ -1,5 +1,5 @@
 import fastify, { FastifyRequest } from "fastify";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const app = fastify({ logger: true });
@@ -18,7 +18,7 @@ import ejs from "ejs";
 // @fastify/view plugin
 import fastifyView from "@fastify/view";
 const optsEjs = {
-  // which engine to use
+  // which JS engine to use
   engine: {
     ejs,
   },
@@ -36,12 +36,78 @@ app.register(fastifyView, optsEjs);
 import fastifyStatic from "@fastify/static";
 import { runInContext } from "vm";
 
-// (async function () {
-// console.log(await prisma.user.findMany({take}))
-// const user = await prisma.user.create({
-//   data: { username: "lucagoslar", email: "luca.goslar@code.berlin" },
+
+// replicating the functionality of __dirname for ES modules (__dirname to get the path of the folder where the current JS file resides)
+import path from "path";
+import { fileURLToPath } from "url";
+import internal from "stream";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Static HTML Files plugin
+app.register(fastifyStatic, {
+  // directory of the file, dirname represents the current directory
+  root: __dirname + "/public",
+  // prefix to specify a prefix path added to the file URLs to allow multiple static folders in different routes
+  // prefix: "/public/",
+});
+
+// // Static CSS Files plugin
+// app.register(fastifyStatic, {
+//   // directory of the file, dirname represents the current directory
+//   root: __dirname + "/public",
+//   // prefix to specify a prefix path added to the file URLs to allow multiple static folders in different routes
+//   prefix: "/public/",
 // });
-// })();
+
+
+
+app.get("/", async (request, reply) => {
+  // reply.send("Hello");
+  const numberOfThoughts = 42;
+  // renders the static.ejs file + defining an object as the second parameter of the view() function incl. properties (as many as you like)
+  reply.view("thoughts", {
+    numberOfThoughts: numberOfThoughts,
+    numberOfMoods: 445,
+    nameOfPage: "Thoughts",
+    currentMood: "Happy",
+  });
+  // const { username, email } = request.body;
+  // const newUser = await prisma.user.create({
+  //   data: {
+  //     username: JSON.stringify(username),
+  //     email: JSON.stringify(email),
+  //   },
+  // })
+});
+
+app.get("/index", (request, reply) => {
+  const numberOfThoughts = 42;
+  // renders the static.ejs file + defining an object as the second parameter of the view() function incl. properties (as many as you like)
+  reply.view("index", {
+    numberOfThoughts: numberOfThoughts,
+    numberOfMoods: 445,
+    nameOfPage: "Thoughts",
+    currentMood: "Happy",
+  });
+});
+app.get("/signup", (request, reply) => {
+  reply.view("login")
+});
+
+app.post("/signup", (request, reply) => {
+    const formData = request.body;
+    console.log(formData);
+    // const username = request.body.username;
+    // const email = request.body.email;
+
+  // const newUser = await prisma.user.create({
+  //   data: {
+  //     username: ,
+  //     email: 
+  //   }
+  // })
+})
 
 app.get("/leandro", async (request, reply) => {
   const leandro = await prisma.user.create({
@@ -53,19 +119,15 @@ app.get("/leandro", async (request, reply) => {
   console.log(leandro);
 });
 
-app.get("/signup", async (request, reply) => {
-  reply.view("paulo.ejs");
-});
-
-app.post("/signup", async (request: any, reply) => {
-  const { email, username } = request.body;
-  const name = await prisma.user.create({
-    data: {
-      username,
-      email,
-    },
-  });
-});
+// app.post("/signup", async (request: any, reply) => {
+//   const { email, username } = request.body;
+//   const name = await prisma.user.create({
+//     data: {
+//       username,
+//       email,
+//     },
+//   });
+// });
 
 // routes
 
@@ -82,31 +144,18 @@ app.get("/search", (request, reply) => {
   console.log(`You searched for: `, JSON.stringify(request.query));
 });
 
-app.get("/", (request, reply) => {
-  const numberOfThoughts = 32;
-  // renders the static.ejs file + defining an object as the second parameter of the view() function incl. properties (as many as you like)
-  reply.view("index", {
-    numberOfThoughts: numberOfThoughts,
-    numberOfMoods: 445,
-    nameOfPage: "Thoughts",
-    currentMood: "Happy",
-  });
-});
-
-// DB Connection einpflegen -> sowohl Fastify als auch Prisma mit MongoDB connecten oder reicht Prisma?
-// Pseudo-Vorstellung der Funktionalität
-// 1. HTML form -> catch den User-Input über Formbody-Plugin
-// 2. Feldinhalte jeweils in einer Variable speichern
-// 3. Variable dann jeweils über Prisma in die Datenbank als Eintrag speichern
 
 // Running the server
-const server = async () => {
+const start = async () => {
   try {
-    await app.listen({ port: 8000 });
-    console.log("SERVER RUNNING...");
+    await app.listen({ port: 8000, host: "0.0.0.0" }, () => {
+      console.log("SERVER RUNNING...");
+    });
   } catch (err) {
     app.log.error(err);
     process.exit(1);
   }
 };
-server();
+start();
+
+

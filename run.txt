@@ -1,0 +1,4 @@
+in order to build the image for the containers:
+
+run:
+sh ./scripts/glue.sh

@@ -3,7 +3,8 @@
   <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
   <title><%= title %></title>
   <meta name="thoughts" content="This is thoughts" />
-  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- /css/style.css because it's linked from the perspective of the public folder specified in the static plugin of fastify -->
+  <link rel="stylesheet" href="/css/style.scss" />
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");

@@ -4,8 +4,8 @@
 # each step creates one layer of the docker image -> whenever one layer changes, we need to run the step of the layer + every other step coming afterwards
 # sets base image to start from to "node:19"
 FROM node:18
-# sets the working directory
-WORKDIR /thoughts_projekt
+# sets the working directory to /app and lets any subsequent instructions like RUN, COPY, CMD, etc. be executed in that directory
+WORKDIR /app
 # copies package.json files to the working directory, thereby also to the image -> optimization, because we cache the results and don't need to run it everytime anything changes
 COPY package*.json ./
 # installs dependencies
@@ -20,5 +20,3 @@ RUN npx prisma generate
 ENV PORT = 8000
 
 EXPOSE 8000
-# command to run when the container is run (start is specified in package.json)
-CMD ["npm", "run", "dev"]

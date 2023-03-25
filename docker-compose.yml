@@ -2,40 +2,33 @@
 services:
   web:
     container_name: thoughtsapp
-    image: thoughtsbackend
     # build image once anything changes in the workdir
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - ./src/:/app/src
-    #  restart whenever it fails
-    # restart: always
-    # look in the current directory for a docker file to build the image
-    # build: .
+    # volume binding -> any changes in the local src/ folders on the host machine will be reflected in the /app/src directory in the container and vice versa
+    # useful for development -> allows devs to make changes to the code on their host machine, and immediately see those changes in the running container without having to rebuild the container every time a change is made
     restart: always
     # mapping of local machine port to the container
     ports:
       - 8000:8000
-    # - "4000:3000"
-    # external_links:
-    #   - thoughts-data
+    # command to run when the container is run (start is specified in package.json)
+    command: npm run dev
 
   mongo1:
     image: mongo:6
     container_name: mongo1
+    ports:
+      - 27019:27017
     restart: always
     volumes:
       - ./scripts/rs-init.sh:/scripts/rs-init.sh
       - ./scripts/init.js:/scripts/init.js
-    #   - mongodata1:/data/db
-    # expose:
-    #   - "27017"
+
     entrypoint:
       ["/usr/bin/mongod", "--replSet", "thoughts_mongo_set", "--bind_ip_all"]
-    depends_on:
-      - mongo2
-      - mongo3
 
   mongo2:
     image: mongo:6
@@ -43,10 +36,6 @@ services:
     restart: always
     entrypoint:
       ["/usr/bin/mongod", "--replSet", "thoughts_mongo_set", "--bind_ip_all"]
-    # volumes:
-    #   - mongodata2:/data/db
-    # expose:
-    #   - "27017"
 
   mongo3:
     image: mongo:6
@@ -54,13 +43,4 @@ services:
     restart: always
     entrypoint:
       ["/usr/bin/mongod", "--replSet", "thoughts_mongo_set", "--bind_ip_all"]
-    # volumes:
-    #   - mongodata3:/data/db
-    # expose:
-    #   - "27017"
-# volumes:
-#   mongodata1:
-#   mongodata2:
-#   mongodata3:
-
-# to
+ 
